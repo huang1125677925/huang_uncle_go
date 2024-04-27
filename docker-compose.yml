@@ -1,0 +1,24 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.development
+    volumes:
+      - .:/app
+    ports:
+      - '27081:80'
+    container_name: wxcloud_huang_uncle_go
+    labels:
+      - wxPort=27082
+      - hostPort=27081
+      - wxcloud=huang_uncle_go
+      - role=container
+    environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=YHBWFFs3
+      - MYSQL_ADDRESS=sh-cynosdbmysql-grp-pct75t3u.sql.tencentcdb.com:22222
+networks:
+  default:
+    external:
+      name: wxcb0
